@@ -8,7 +8,10 @@ namespace Centralizador.DTO_perfiles
     {
         public EstudiantePerfil()
         {
-            CreateMap<Estudiante, EstudianteReadDTO>();
+            CreateMap<Estudiante, EstudianteReadDTO>();// ------->
+            CreateMap<EstudianteCreateDTO, Estudiante>();
+            CreateMap<EstudianteUpdateDTO, Estudiante>();
+            CreateMap<Estudiante, EstudianteUpdateDTO>();
         }
     }
 }

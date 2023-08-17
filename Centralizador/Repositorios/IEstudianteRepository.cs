@@ -5,5 +5,11 @@ namespace Centralizador.Repositorios
     {
         IEnumerable<Estudiante> GetEstudiantes();
         Estudiante GetEstudianteById(int id);
+
+        void AddEstudiante(Estudiante estudiante);
+
+        void UpdateEstudiante(Estudiante estudiante);
+
+        bool Guardar();
     }
 }
