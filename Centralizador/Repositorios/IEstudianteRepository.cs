@@ -10,6 +10,8 @@ namespace Centralizador.Repositorios
 
         void UpdateEstudiante(Estudiante estudiante);
 
+        void EliminarEstudiante(Estudiante est);
+
         bool Guardar();
     }
 }

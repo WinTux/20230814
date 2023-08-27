@@ -72,5 +72,16 @@ namespace Centralizador.Controllers
             repo.Guardar();
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult EliminarEstudiante(int id)
+        {
+            Estudiante estudiante = repo.GetEstudianteById(id);
+            if (estudiante == null)
+                return NotFound();
+            repo.EliminarEstudiante(estudiante);
+            repo.Guardar();
+            return NoContent();
+        }
     }
 }

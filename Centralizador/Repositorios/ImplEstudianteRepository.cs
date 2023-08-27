@@ -16,6 +16,12 @@ namespace Centralizador.Repositorios
             cont.Estudiantes.Add(estudiante);
         }
 
+        public void EliminarEstudiante(Estudiante est)
+        {
+            if (est == null) throw new ArgumentNullException(nameof(est));
+            cont.Estudiantes.Remove(est);
+        }
+
         public Estudiante GetEstudianteById(int id)
         {
             return cont.Estudiantes.FirstOrDefault(est => est.id == id);
