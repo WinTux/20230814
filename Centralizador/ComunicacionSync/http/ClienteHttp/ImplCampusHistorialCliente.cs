@@ -1,0 +1,26 @@
+﻿using Centralizador.DTO;
+using System.Text;
+using System.Text.Json;
+
+namespace Centralizador.ComunicacionSync.http.ClienteHttp
+{
+    public class ImplCampusHistorialCliente : ICampusHistorialCliente
+    {
+        private readonly HttpClient httpClient;
+        private readonly IConfiguration configuration;
+        public ImplCampusHistorialCliente(HttpClient httpClient, IConfiguration configuration)
+        {
+            this.httpClient = httpClient;
+            this.configuration = configuration;
+        }
+        public async Task ComunicarseConCampus(EstudianteReadDTO est)
+        {
+            StringContent cuerpoHttp = new StringContent(JsonSerializer.Serialize(est), Encoding.UTF8, "application/json");
+            var respuesta = await httpClient.PostAsync($"{configuration["CampusService"]}/api/historial", cuerpoHttp);
+            if (respuesta.IsSuccessStatusCode)
+                Console.WriteLine("Envío POST sincronizaco hacia campus ... ÉXITO");
+            else
+                Console.WriteLine("Envío POST sincronizaco hacia campus ... FALLIDO");
+        }
+    }
+}

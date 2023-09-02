@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Azure;
+using Centralizador.ComunicacionSync.http.ClienteHttp;
 using Centralizador.DTO;
 using Centralizador.Models;
 using Centralizador.Repositorios;
@@ -14,11 +15,13 @@ namespace Centralizador.Controllers
     {
         private readonly IEstudianteRepository repo;
         private readonly IMapper mapper;
+        private readonly ICampusHistorialCliente campusHistorialCliente;
 
-        public EstudianteController(IEstudianteRepository repo, IMapper mapper)
+        public EstudianteController(IEstudianteRepository repo, IMapper mapper, ICampusHistorialCliente campusHistorialCliente)
         {
             this.repo = repo;
             this.mapper = mapper;
+            this.campusHistorialCliente = campusHistorialCliente;
         }
 
         [HttpGet]
@@ -37,12 +40,23 @@ namespace Centralizador.Controllers
         }
 
         [HttpPost]
-        public ActionResult<EstudianteReadDTO> SetEstudiante(EstudianteCreateDTO estudianteCreateDTO)
+        public async Task<ActionResult<EstudianteReadDTO>> SetEstudiante(EstudianteCreateDTO estudianteCreateDTO)
         {
             Estudiante estudiante = mapper.Map<Estudiante>(estudianteCreateDTO);
             repo.AddEstudiante(estudiante);
             repo.Guardar();
             EstudianteReadDTO estRetorno = mapper.Map<EstudianteReadDTO>(estudiante);
+
+            //Para comunicación sincronizada
+            try
+            {
+                await campusHistorialCliente.ComunicarseConCampus(estRetorno);
+            }
+            catch (Exception e) {
+                Console.WriteLine($"Ocurrió un error al comunicarse con Campus de forma sincronizada: {e.Message}");
+            }
+            //Fin para comunicación sincronizada
+
             return CreatedAtRoute(nameof(GetEstudianteById), new { id = estudiante.id }, estRetorno);
         }
 

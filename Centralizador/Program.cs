@@ -2,6 +2,7 @@ using Centralizador.Repositorios;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Newtonsoft.Json.Serialization;
+using Centralizador.ComunicacionSync.http.ClienteHttp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddScoped<IEstudianteRepository, ImplEstudianteRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient<ICampusHistorialCliente, ImplCampusHistorialCliente>();
 
 var app = builder.Build();
 
