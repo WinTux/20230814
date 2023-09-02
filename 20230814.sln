@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centralizador", "Centralizador\Centralizador.csproj", "{06AFEBE8-D2F1-4819-8EF5-51CC43B76E14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centralizador", "Centralizador\Centralizador.csproj", "{06AFEBE8-D2F1-4819-8EF5-51CC43B76E14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus", "Campus\Campus.csproj", "{97853F58-2CFA-4CDC-8C48-293CE551852C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{06AFEBE8-D2F1-4819-8EF5-51CC43B76E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06AFEBE8-D2F1-4819-8EF5-51CC43B76E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06AFEBE8-D2F1-4819-8EF5-51CC43B76E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97853F58-2CFA-4CDC-8C48-293CE551852C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97853F58-2CFA-4CDC-8C48-293CE551852C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97853F58-2CFA-4CDC-8C48-293CE551852C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97853F58-2CFA-4CDC-8C48-293CE551852C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
